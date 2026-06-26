@@ -6,218 +6,193 @@
 <title>Dillon Martella — Bloque Client Assignments</title>
 <style>
   :root{
-    --bg:#0d1117; --panel:#161b22; --panel2:#1c2330; --border:#2d3542;
+    --bg:#0d1117; --panel:#161b22; --panel2:#1c2230; --border:#30363d;
     --text:#e6edf3; --muted:#8b949e; --accent:#58a6ff;
   }
-  *{box-sizing:border-box;}
+  *{box-sizing:border-box}
   body{margin:0;background:var(--bg);color:var(--text);
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    font-size:14px;line-height:1.5;}
-  .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 60px;}
-  header h1{margin:0 0 4px;font-size:24px;font-weight:700;}
-  header .sub{color:var(--muted);font-size:13px;}
-  .meta{color:var(--muted);font-size:12px;margin-top:6px;}
-  .chips{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 18px;}
-  .chip{display:inline-flex;align-items:center;gap:7px;background:var(--panel);
-    border:1px solid var(--border);border-radius:20px;padding:6px 12px;font-size:12px;
-    cursor:pointer;user-select:none;transition:border-color .15s,background .15s;}
+    -webkit-font-smoothing:antialiased;padding:28px 22px 60px;}
+  header{max-width:1100px;margin:0 auto 22px;}
+  h1{font-size:24px;margin:0 0 4px;font-weight:650;}
+  .sub{color:var(--muted);font-size:13px;}
+  .chips{display:flex;flex-wrap:wrap;gap:10px;max-width:1100px;margin:0 auto 22px;}
+  .chip{background:var(--panel);border:1px solid var(--border);border-radius:20px;
+    padding:7px 14px;font-size:13px;display:flex;align-items:center;gap:8px;cursor:pointer;
+    user-select:none;transition:border-color .15s,background .15s;}
   .chip:hover{border-color:var(--accent);}
   .chip.active{background:var(--panel2);border-color:var(--accent);}
   .chip .dot{width:10px;height:10px;border-radius:50%;}
-  .chip .cnt{color:var(--muted);font-weight:600;}
-  .chip.total{font-weight:700;}
-  .controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:16px;}
+  .chip .n{color:var(--muted);font-variant-numeric:tabular-nums;}
+  .controls{max-width:1100px;margin:0 auto 16px;display:flex;gap:12px;flex-wrap:wrap;align-items:center;}
   input[type=search]{flex:1;min-width:220px;background:var(--panel);border:1px solid var(--border);
-    color:var(--text);border-radius:8px;padding:10px 12px;font-size:14px;outline:none;}
+    color:var(--text);border-radius:8px;padding:10px 14px;font-size:14px;outline:none;}
   input[type=search]:focus{border-color:var(--accent);}
   select{background:var(--panel);border:1px solid var(--border);color:var(--text);
-    border-radius:8px;padding:10px 12px;font-size:14px;outline:none;}
-  table{width:100%;border-collapse:collapse;background:var(--panel);
-    border:1px solid var(--border);border-radius:10px;overflow:hidden;}
-  thead th{text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.5px;
-    color:var(--muted);padding:11px 14px;border-bottom:1px solid var(--border);background:var(--panel2);}
-  tbody td{padding:11px 14px;border-bottom:1px solid var(--border);vertical-align:middle;}
+    border-radius:8px;padding:10px 12px;font-size:14px;outline:none;cursor:pointer;}
+  .wrap{max-width:1100px;margin:0 auto;border:1px solid var(--border);border-radius:12px;overflow:hidden;}
+  table{width:100%;border-collapse:collapse;}
+  thead th{background:var(--panel);text-align:left;font-size:12px;text-transform:uppercase;
+    letter-spacing:.04em;color:var(--muted);padding:12px 16px;border-bottom:1px solid var(--border);}
+  tbody td{padding:12px 16px;border-bottom:1px solid var(--border);font-size:14px;vertical-align:middle;}
   tbody tr:last-child td{border-bottom:none;}
-  tbody tr:hover{background:var(--panel2);}
-  .name a{color:var(--text);text-decoration:none;font-weight:600;}
+  tbody tr:hover{background:var(--panel);}
+  .name a{color:var(--text);text-decoration:none;font-weight:500;}
   .name a:hover{color:var(--accent);text-decoration:underline;}
-  .badge{display:inline-block;padding:3px 10px;border-radius:12px;font-size:11px;
-    font-weight:700;color:#fff;white-space:nowrap;}
+  .badge{display:inline-block;padding:4px 11px;border-radius:20px;font-size:12px;font-weight:600;
+    color:#fff;white-space:nowrap;}
   .crm a{color:var(--accent);text-decoration:none;font-size:13px;}
   .crm a:hover{text-decoration:underline;}
-  .empty{padding:30px;text-align:center;color:var(--muted);}
-  footer{margin-top:18px;color:var(--muted);font-size:11px;text-align:center;}
+  .count{max-width:1100px;margin:14px auto 0;color:var(--muted);font-size:13px;}
+  .empty{padding:40px;text-align:center;color:var(--muted);}
 </style>
 </head>
 <body>
+<header>
+  <h1>Dillon Martella — Bloque Client Assignments</h1>
+  <div class="sub">ClaimsForce CRM · <span id="total"></span> clients · Last updated <span id="updated"></span></div>
+</header>
+
+<div class="chips" id="chips"></div>
+
+<div class="controls">
+  <input type="search" id="search" placeholder="Search by client name…">
+  <select id="stageFilter"><option value="">All stages</option></select>
+</div>
+
 <div class="wrap">
-  <header>
-    <h1>Dillon Martella — Bloque Client Assignments</h1>
-    <div class="sub">ClaimsForce CRM &middot; assigned client pipeline</div>
-    <div class="meta">Last updated: <span id="updated"></span> &middot; <span id="totalmeta"></span> clients</div>
-  </header>
-
-  <div class="chips" id="chips"></div>
-
-  <div class="controls">
-    <input type="search" id="search" placeholder="Search by client name…" autocomplete="off">
-    <select id="stageSel"><option value="">All stages</option></select>
-  </div>
-
   <table>
-    <thead><tr><th>Client</th><th>Stage</th><th>CRM Record</th></tr></thead>
+    <thead><tr><th>Client</th><th>Stage</th><th>CRM</th></tr></thead>
     <tbody id="rows"></tbody>
   </table>
-  <footer>Auto-generated from ClaimsForce CRM &middot; arrington-collab/bloque-reports</footer>
 </div>
+<div class="count" id="count"></div>
 
 <script>
 const CRM_BASE = "https://sa.claimsforce.net/#BloqueClient/view/";
-const LAST_UPDATED = "June 26, 2026 at 8:11 AM MST";
+const UPDATED = "2026-06-26 15:44 UTC";
 
-// Pipeline order + colors
-const STAGE_ORDER = ["Lead","Opportunity","Assigned","Estimate Request","Review 1st Estimate","Estimate Review","Estimate Complete","In Negotiations","Additional Supps","Need Assistance","Opportunity Won","Opportunity Lost"];
-const STAGE_COLOR = {
+const STAGE_COLORS = {
   "Lead":"#6c757d","Opportunity":"#17a2b8","Assigned":"#007bff",
   "Estimate Request":"#fd7e14","Review 1st Estimate":"#e83e8c",
   "Estimate Review":"#6f42c1","Estimate Complete":"#20c997",
   "In Negotiations":"#ffc107","Additional Supps":"#dc3545",
   "Need Assistance":"#ff4444","Opportunity Won":"#28a745","Opportunity Lost":"#6c757d"
 };
+const STAGE_ORDER = ["Lead","Opportunity","Assigned","Estimate Request","Review 1st Estimate",
+  "Estimate Review","Estimate Complete","In Negotiations","Additional Supps","Need Assistance",
+  "Opportunity Won","Opportunity Lost"];
 
 const DATA = [
-{"id":"6a3ad7f3830198ecf","name":"Ramon Aldecoa","stage":"Opportunity Won"},
-{"id":"6a0f20b97ce433b63","name":"Christina Molina","stage":"Estimate Review"},
-{"id":"69ef941d1626f0c4f","name":"Adan Vargas","stage":"Opportunity Won"},
-{"id":"69d7d98e5a6e7b8df","name":"Socorro Martinez","stage":"Opportunity Won"},
-{"id":"69cd4c12273634c1f","name":"Rito Orrantia","stage":"In Negotiations"},
-{"id":"69c41648db98bc314","name":"Jessica Sipe","stage":"In Negotiations"},
-{"id":"69c15cbc93389c11e","name":"Richard Core","stage":"In Negotiations"},
-{"id":"69bc680194eabf70e","name":"Dori Stoesz","stage":"In Negotiations"},
-{"id":"69bb27801e2f83f72","name":"Miguel Silva","stage":"Estimate Request"},
-{"id":"69b9d95caf5bebf06","name":"Heather Potter","stage":"In Negotiations"},
-{"id":"69b898529c7d5b19a","name":"Katherine Hurd","stage":"In Negotiations"},
-{"id":"69b8807194925ff47","name":"Linh Tompkins","stage":"In Negotiations"},
-{"id":"69b1f2dac04efb1ba","name":"Gilbert Phillip Stewart","stage":"In Negotiations"},
-{"id":"69aee2d261d707315","name":"Melissa Bahe-Garcia","stage":"Opportunity Won"},
-{"id":"69a7520d78416bf88","name":"Chelsea Benton","stage":"Need Assistance"},
-{"id":"69a5b09de52d802da","name":"Kamila Perez","stage":"In Negotiations"},
-{"id":"699ddfe4a3348cd41","name":"Sally Wang","stage":"In Negotiations"},
-{"id":"699791da90470af76","name":"Jaylin Sicilia","stage":"In Negotiations"},
-{"id":"69972ee426fcd918e","name":"Dondrell Swanson","stage":"In Negotiations"},
-{"id":"6993aa03c445151bf","name":"Waldher Seminario","stage":"In Negotiations"},
-{"id":"6993a787c7e18264f","name":"Tanner Marvin Fosmire","stage":"In Negotiations"},
-{"id":"699340d0cc66f1bb2","name":"Madison Morgan","stage":"Opportunity Won"},
-{"id":"698676c37918ec360","name":"Ann Tromba","stage":"In Negotiations"},
-{"id":"69861021aa23c70b0","name":"Sharon McQueen","stage":"Opportunity Won"},
-{"id":"6980bac30ca565e86","name":"Kevin Richardson","stage":"In Negotiations"},
-{"id":"697b8abd5dc1190a0","name":"Steven Emery","stage":"Need Assistance"},
-{"id":"69725117b5731a8ec","name":"Renee Dominguez","stage":"Need Assistance"},
-{"id":"69692ac178cf93cbb","name":"Maria Corrales","stage":"Opportunity Won"},
-{"id":"6969081cebcb4b9c4","name":"Perris Henderson","stage":"Opportunity Won"},
-{"id":"69666093660930ab3","name":"Ema Delgado","stage":"Opportunity Won"},
-{"id":"696564deac506a2fb","name":"Matt Kim","stage":"Estimate Request"},
-{"id":"69615d5fd61da1768","name":"Elmer Mendoza","stage":"In Negotiations"},
-{"id":"696023f2e46a15bbd","name":"Ariel Garcia","stage":"Opportunity Won"},
-{"id":"69556d9bd302abc9c","name":"Jan Chrisner","stage":"Need Assistance"},
-{"id":"6949bca59e8722d30","name":"Kevin Moore","stage":"In Negotiations"},
-{"id":"6942cd28bd69b185e","name":"Lynda Lydick","stage":"Need Assistance"},
-{"id":"69408ede23a12c952","name":"Gary Rinear","stage":"In Negotiations"},
-{"id":"6939e78a24b8b675c","name":"Mindy Greene","stage":"Opportunity Won"},
-{"id":"6939a48d5e7fec499","name":"James Motte","stage":"In Negotiations"},
-{"id":"6930c2b6b433010ed","name":"Jonathan Elias","stage":"Need Assistance"},
-{"id":"6930b1937ff4443f3","name":"David Wilkinson","stage":"In Negotiations"},
-{"id":"69276c675869a87fe","name":"Tommy Kendrick Cazador","stage":"Opportunity Won"},
-{"id":"6924d101824b2d64a","name":"Max Armstrong","stage":"Opportunity Won"},
-{"id":"691e055b14901f121","name":"Richard Long","stage":"In Negotiations"},
-{"id":"691dee3930c31dd92","name":"Darin Jasper","stage":"In Negotiations"},
-{"id":"690388d3194d17adb","name":"Ramon Navarro","stage":"In Negotiations"},
-{"id":"6903849a8b53a40ed","name":"Richard McQueen","stage":"Need Assistance"},
-{"id":"6903824649d7fcc08","name":"William Werner","stage":"In Negotiations"},
-{"id":"68fab276135ba4f76","name":"James Phelps","stage":"In Negotiations"},
-{"id":"68f94df1d581086fb","name":"Barbara Mills","stage":"In Negotiations"},
-{"id":"68f2a70ed01f98aa6","name":"Aurora Garcia","stage":"Need Assistance"},
-{"id":"68f1135a4cb591dcf","name":"Logan Steward","stage":"In Negotiations"},
-{"id":"68ee9690a3a88983e","name":"Mary Alice Robinson","stage":"Opportunity Won"},
-{"id":"68ed88d78af2e44aa","name":"John Schmiesing","stage":"Opportunity Won"},
-{"id":"68ed26fe1b0c9d56e","name":"Christine DeRuvo (VIP)","stage":"Need Assistance"},
-{"id":"68ed21f098c79a724","name":"Austin Jardine","stage":"Need Assistance"},
-{"id":"68dd6ccebd6680d8f","name":"Elexis Garcia","stage":"Need Assistance"},
-{"id":"68bb325598bb33866","name":"Sandy Zamora","stage":"Opportunity Won"}
+  {id:"6a3ad7f3830198ecf",name:"Ramon Aldecoa",stage:"Opportunity Won"},
+  {id:"6a0f20b97ce433b63",name:"Christina Molina",stage:"Estimate Review"},
+  {id:"69ef941d1626f0c4f",name:"Adan Vargas",stage:"Opportunity Won"},
+  {id:"69d7d98e5a6e7b8df",name:"Socorro Martinez",stage:"Opportunity Won"},
+  {id:"69cd4c12273634c1f",name:"Rito Orrantia",stage:"In Negotiations"},
+  {id:"69c41648db98bc314",name:"Jessica Sipe",stage:"In Negotiations"},
+  {id:"69c15cbc93389c11e",name:"Richard Core",stage:"In Negotiations"},
+  {id:"69bc680194eabf70e",name:"Dori Stoesz",stage:"In Negotiations"},
+  {id:"69bb27801e2f83f72",name:"Miguel Silva",stage:"Estimate Request"},
+  {id:"69b9d95caf5bebf06",name:"Heather Potter",stage:"In Negotiations"},
+  {id:"69b898529c7d5b19a",name:"Katherine Hurd",stage:"In Negotiations"},
+  {id:"69b8807194925ff47",name:"Linh Tompkins",stage:"In Negotiations"},
+  {id:"69b1f2dac04efb1ba",name:"Gilbert Phillip Stewart",stage:"In Negotiations"},
+  {id:"69aee2d261d707315",name:"Melissa Bahe-Garcia",stage:"Opportunity Won"},
+  {id:"69a7520d78416bf88",name:"Chelsea Benton",stage:"Need Assistance"},
+  {id:"69a5b09de52d802da",name:"Kamila Perez",stage:"In Negotiations"},
+  {id:"699ddfe4a3348cd41",name:"Sally Wang",stage:"In Negotiations"},
+  {id:"699791da90470af76",name:"Jaylin Sicilia",stage:"In Negotiations"},
+  {id:"69972ee426fcd918e",name:"Dondrell Swanson",stage:"In Negotiations"},
+  {id:"6993aa03c445151bf",name:"Waldher Seminario",stage:"In Negotiations"},
+  {id:"6993a787c7e18264f",name:"Tanner Marvin Fosmire",stage:"In Negotiations"},
+  {id:"699340d0cc66f1bb2",name:"Madison Morgan",stage:"Opportunity Won"},
+  {id:"698676c37918ec360",name:"Ann Tromba",stage:"In Negotiations"},
+  {id:"69861021aa23c70b0",name:"Sharon McQueen",stage:"Opportunity Won"},
+  {id:"6980bac30ca565e86",name:"Kevin Richardson",stage:"In Negotiations"},
+  {id:"697b8abd5dc1190a0",name:"Steven Emery",stage:"Need Assistance"},
+  {id:"69725117b5731a8ec",name:"Renee Dominguez",stage:"Need Assistance"},
+  {id:"69692ac178cf93cbb",name:"Maria Corrales",stage:"Opportunity Won"},
+  {id:"6969081cebcb4b9c4",name:"Perris Henderson",stage:"Opportunity Won"},
+  {id:"69666093660930ab3",name:"Ema Delgado",stage:"Opportunity Won"},
+  {id:"696564deac506a2fb",name:"Matt Kim",stage:"Estimate Request"},
+  {id:"69615d5fd61da1768",name:"Elmer Mendoza",stage:"In Negotiations"},
+  {id:"696023f2e46a15bbd",name:"Ariel Garcia",stage:"Opportunity Won"},
+  {id:"69556d9bd302abc9c",name:"Jan Chrisner",stage:"Need Assistance"},
+  {id:"6949bca59e8722d30",name:"Kevin Moore",stage:"In Negotiations"},
+  {id:"6942cd28bd69b185e",name:"Lynda Lydick",stage:"Need Assistance"},
+  {id:"69408ede23a12c952",name:"Gary Rinear",stage:"In Negotiations"},
+  {id:"6939e78a24b8b675c",name:"Mindy Greene",stage:"Opportunity Won"},
+  {id:"6939a48d5e7fec499",name:"James Motte",stage:"In Negotiations"},
+  {id:"6930c2b6b433010ed",name:"Jonathan Elias",stage:"Need Assistance"},
+  {id:"6930b1937ff4443f3",name:"David Wilkinson",stage:"In Negotiations"},
+  {id:"69276c675869a87fe",name:"Tommy Kendrick Cazador",stage:"Opportunity Won"},
+  {id:"6924d101824b2d64a",name:"Max Armstrong",stage:"Opportunity Won"},
+  {id:"691e055b14901f121",name:"Richard Long",stage:"In Negotiations"},
+  {id:"691dee3930c31dd92",name:"Darin Jasper",stage:"In Negotiations"},
+  {id:"690388d3194d17adb",name:"Ramon Navarro",stage:"In Negotiations"},
+  {id:"6903849a8b53a40ed",name:"Richard McQueen",stage:"Need Assistance"},
+  {id:"6903824649d7fcc08",name:"William Werner",stage:"In Negotiations"},
+  {id:"68fab276135ba4f76",name:"James Phelps",stage:"In Negotiations"},
+  {id:"68f94df1d581086fb",name:"Barbara Mills",stage:"In Negotiations"},
+  {id:"68f2a70ed01f98aa6",name:"Aurora Garcia",stage:"Need Assistance"},
+  {id:"68f1135a4cb591dcf",name:"Logan Steward",stage:"In Negotiations"},
+  {id:"68ee9690a3a88983e",name:"Mary Alice Robinson",stage:"Opportunity Won"},
+  {id:"68ed88d78af2e44aa",name:"John Schmiesing",stage:"Opportunity Won"},
+  {id:"68ed26fe1b0c9d56e",name:"Christine DeRuvo (VIP)",stage:"Need Assistance"},
+  {id:"68ed21f098c79a724",name:"Austin Jardine",stage:"Need Assistance"},
+  {id:"68dd6ccebd6680d8f",name:"Elexis Garcia",stage:"Need Assistance"},
+  {id:"68bb325598bb33866",name:"Sandy Zamora",stage:"Opportunity Won"}
 ];
 
 function stageRank(s){const i=STAGE_ORDER.indexOf(s);return i===-1?999:i;}
-function color(s){return STAGE_COLOR[s]||"#6c757d";}
+function color(s){return STAGE_COLORS[s]||"#6c757d";}
+function esc(s){return s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));}
 
-// sort: pipeline order, then alphabetical by name
-DATA.sort((a,b)=>{
+const sorted = [...DATA].sort((a,b)=>{
   const r=stageRank(a.stage)-stageRank(b.stage);
-  if(r!==0)return r;
-  return a.name.localeCompare(b.name);
+  return r!==0?r:a.name.localeCompare(b.name);
 });
 
-const counts={};
-DATA.forEach(c=>counts[c.stage]=(counts[c.stage]||0)+1);
-const presentStages=STAGE_ORDER.filter(s=>counts[s]);
+let activeStage = "";
+let query = "";
 
-let activeStage="";
-let query="";
+document.getElementById("total").textContent = DATA.length;
+document.getElementById("updated").textContent = UPDATED;
 
-document.getElementById("updated").textContent=LAST_UPDATED;
-document.getElementById("totalmeta").textContent=DATA.length;
-
-// chips
-const chipsEl=document.getElementById("chips");
-const totalChip=document.createElement("div");
-totalChip.className="chip total active";
-totalChip.dataset.stage="";
-totalChip.innerHTML=`All <span class="cnt">${DATA.length}</span>`;
-chipsEl.appendChild(totalChip);
-presentStages.forEach(s=>{
-  const c=document.createElement("div");
-  c.className="chip";c.dataset.stage=s;
-  c.innerHTML=`<span class="dot" style="background:${color(s)}"></span>${s} <span class="cnt">${counts[s]}</span>`;
-  chipsEl.appendChild(c);
-});
-
-// stage select
-const sel=document.getElementById("stageSel");
-presentStages.forEach(s=>{
+// build chips + filter options
+const counts = {};
+DATA.forEach(d=>counts[d.stage]=(counts[d.stage]||0)+1);
+const stagesPresent = STAGE_ORDER.filter(s=>counts[s]);
+const chips = document.getElementById("chips");
+const sel = document.getElementById("stageFilter");
+stagesPresent.forEach(s=>{
+  const chip=document.createElement("div");
+  chip.className="chip";chip.dataset.stage=s;
+  chip.innerHTML=`<span class="dot" style="background:${color(s)}"></span>${esc(s)} <span class="n">${counts[s]}</span>`;
+  chip.onclick=()=>{activeStage=activeStage===s?"":s;sel.value=activeStage;syncChips();render();};
+  chips.appendChild(chip);
   const o=document.createElement("option");o.value=s;o.textContent=`${s} (${counts[s]})`;sel.appendChild(o);
 });
+function syncChips(){[...chips.children].forEach(c=>c.classList.toggle("active",c.dataset.stage===activeStage));}
 
-function setStage(s){
-  activeStage=s;
-  sel.value=s;
-  document.querySelectorAll(".chip").forEach(ch=>ch.classList.toggle("active",ch.dataset.stage===s));
-  render();
-}
-
-chipsEl.addEventListener("click",e=>{
-  const chip=e.target.closest(".chip");
-  if(chip)setStage(chip.dataset.stage);
-});
-sel.addEventListener("change",()=>setStage(sel.value));
-document.getElementById("search").addEventListener("input",e=>{query=e.target.value.toLowerCase().trim();render();});
+sel.onchange=()=>{activeStage=sel.value;syncChips();render();};
+document.getElementById("search").oninput=e=>{query=e.target.value.toLowerCase();render();};
 
 function render(){
   const rows=document.getElementById("rows");
-  const filtered=DATA.filter(c=>
-    (!activeStage||c.stage===activeStage)&&
-    (!query||c.name.toLowerCase().includes(query))
-  );
-  if(!filtered.length){
-    rows.innerHTML=`<tr><td colspan="3" class="empty">No clients match your filters.</td></tr>`;
-    return;
+  const list=sorted.filter(d=>(!activeStage||d.stage===activeStage)&&(!query||d.name.toLowerCase().includes(query)));
+  if(list.length===0){rows.innerHTML=`<tr><td colspan="3" class="empty">No matching clients.</td></tr>`;}
+  else{
+    rows.innerHTML=list.map(d=>{
+      const url=CRM_BASE+d.id;
+      return `<tr>
+        <td class="name"><a href="${url}" target="_blank" rel="noopener">${esc(d.name)}</a></td>
+        <td><span class="badge" style="background:${color(d.stage)}">${esc(d.stage)}</span></td>
+        <td class="crm"><a href="${url}" target="_blank" rel="noopener">Open ↗</a></td>
+      </tr>`;
+    }).join("");
   }
-  rows.innerHTML=filtered.map(c=>{
-    const url=CRM_BASE+c.id;
-    return `<tr>
-      <td class="name"><a href="${url}" target="_blank" rel="noopener">${c.name}</a></td>
-      <td><span class="badge" style="background:${color(c.stage)}">${c.stage}</span></td>
-      <td class="crm"><a href="${url}" target="_blank" rel="noopener">Open in CRM ↗</a></td>
-    </tr>`;
-  }).join("");
+  document.getElementById("count").textContent=`Showing ${list.length} of ${DATA.length} clients`;
 }
 render();
 </script>
