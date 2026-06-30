@@ -5,80 +5,85 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Isaac Robinson &mdash; Bloque Client Assignments</title>
 <style>
-  :root{ --bg:#0d1117; --panel:#161b22; --panel2:#1c232c; --border:#30363d;
-    --text:#e6edf3; --muted:#8b949e; --accent:#58a6ff; }
-  *{box-sizing:border-box}
-  body{margin:0;background:var(--bg);color:var(--text);
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;}
-  .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 60px}
-  header h1{margin:0 0 4px;font-size:24px}
-  header .sub{color:var(--muted);font-size:14px}
-  .meta{color:var(--muted);font-size:13px;margin-top:6px}
-  .chips{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 10px}
-  .chip{display:inline-flex;align-items:center;gap:8px;cursor:pointer;
-    background:var(--panel);border:1px solid var(--border);color:var(--text);
-    border-radius:999px;padding:6px 12px;font-size:13px;transition:.15s}
-  .chip:hover{border-color:var(--c);background:var(--panel2)}
-  .chip.active{border-color:var(--c);box-shadow:0 0 0 1px var(--c) inset}
-  .chip .dot{width:9px;height:9px;border-radius:50%;background:var(--c)}
-  .chip .n{background:var(--c);color:#0d1117;border-radius:999px;font-weight:700;
-    font-size:11px;padding:1px 7px;margin-left:2px}
-  .controls{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin:14px 0 6px}
-  input[type=search]{flex:1;min-width:220px;background:var(--panel);border:1px solid var(--border);
-    color:var(--text);border-radius:8px;padding:10px 12px;font-size:14px;outline:none}
-  input[type=search]:focus{border-color:var(--accent)}
-  .clearbtn{background:var(--panel);border:1px solid var(--border);color:var(--muted);
-    border-radius:8px;padding:10px 14px;cursor:pointer;font-size:13px}
-  .clearbtn:hover{color:var(--text);border-color:var(--accent)}
-  .count{color:var(--muted);font-size:13px;margin:10px 2px}
-  table{width:100%;border-collapse:collapse;background:var(--panel);
-    border:1px solid var(--border);border-radius:10px;overflow:hidden}
-  thead th{text-align:left;font-size:12px;text-transform:uppercase;letter-spacing:.04em;
-    color:var(--muted);padding:12px 16px;border-bottom:1px solid var(--border);background:var(--panel2)}
-  tbody td{padding:11px 16px;border-bottom:1px solid var(--border);font-size:14px;vertical-align:middle}
-  tbody tr:last-child td{border-bottom:none}
-  tbody tr:hover{background:var(--panel2)}
-  .name a{color:var(--text);text-decoration:none;font-weight:600}
-  .name a:hover{color:var(--accent);text-decoration:underline}
-  .badge{display:inline-block;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:600;
-    color:#0d1117;background:var(--c);white-space:nowrap}
-  .link a{color:var(--accent);text-decoration:none;font-size:13px}
-  .link a:hover{text-decoration:underline}
-  .empty{padding:30px;text-align:center;color:var(--muted)}
-  footer{margin-top:20px;color:var(--muted);font-size:12px;text-align:center}
+:root{
+  --bg:#0d1117; --panel:#161b22; --panel2:#1c2330; --border:#2d333b;
+  --text:#e6edf3; --muted:#9da7b3; --accent:#58a6ff;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-size:14px;line-height:1.5}
+.wrap{max-width:1100px;margin:0 auto;padding:24px 20px 60px}
+header h1{margin:0 0 4px;font-size:24px;font-weight:700}
+header .sub{color:var(--muted);font-size:13px}
+header .meta{color:var(--muted);font-size:12px;margin-top:6px}
+.total{display:inline-block;background:var(--panel2);border:1px solid var(--border);
+  border-radius:20px;padding:3px 12px;font-weight:600;margin-left:8px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 16px}
+.chip{display:inline-flex;align-items:center;gap:7px;background:var(--panel);
+  border:1px solid var(--border);border-radius:20px;padding:6px 12px;color:var(--text);
+  cursor:pointer;font-size:13px;transition:all .12s;font-family:inherit}
+.chip:hover{border-color:var(--c);background:var(--panel2)}
+.chip.active{border-color:var(--c);background:var(--panel2);box-shadow:0 0 0 1px var(--c) inset}
+.chip .dot{width:9px;height:9px;border-radius:50%;background:var(--c)}
+.chip .cnt{background:var(--c);color:#0d1117;font-weight:700;border-radius:10px;
+  padding:0 7px;font-size:12px;min-width:18px;text-align:center}
+.controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:0 0 14px}
+#search{flex:1;min-width:220px;background:var(--panel);border:1px solid var(--border);
+  border-radius:8px;padding:9px 12px;color:var(--text);font-size:14px;font-family:inherit}
+#search:focus{outline:none;border-color:var(--accent)}
+#clear{background:var(--panel);border:1px solid var(--border);color:var(--muted);
+  border-radius:8px;padding:9px 14px;cursor:pointer;font-family:inherit;font-size:13px}
+#clear:hover{color:var(--text);border-color:var(--accent)}
+.shown{color:var(--muted);font-size:12px}
+.tablewrap{background:var(--panel);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+table{width:100%;border-collapse:collapse}
+thead th{text-align:left;padding:12px 16px;font-size:11px;text-transform:uppercase;
+  letter-spacing:.5px;color:var(--muted);border-bottom:1px solid var(--border);background:var(--panel2)}
+tbody td{padding:11px 16px;border-bottom:1px solid var(--border)}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:var(--panel2)}
+td.name a{color:var(--text);text-decoration:none;font-weight:600}
+td.name a:hover{color:var(--accent);text-decoration:underline}
+.badge{display:inline-block;padding:3px 11px;border-radius:20px;font-size:12px;font-weight:600;
+  color:#0d1117;background:var(--c);white-space:nowrap}
+td.link a{color:var(--accent);text-decoration:none;font-size:13px;white-space:nowrap}
+td.link a:hover{text-decoration:underline}
+.empty{padding:40px;text-align:center;color:var(--muted)}
+@media(max-width:560px){td.link{display:none}thead th:last-child{display:none}}
 </style>
 </head>
 <body>
 <div class="wrap">
   <header>
     <h1>Isaac Robinson &mdash; Bloque Client Assignments</h1>
-    <div class="sub">ClaimsForce CRM &bull; BloqueClient pipeline</div>
-    <div class="meta">160 clients &bull; Last updated June 30, 2026 at 18:12 UTC</div>
+    <div class="sub">ClaimsForce CRM &middot; assigned BloqueClient records<span class="total">160 clients</span></div>
+    <div class="meta">Last updated: 2026-06-30 18:44 UTC</div>
   </header>
 
   <div class="chips" id="chips">
-    <button class="chip active" data-stage="__ALL__" style="--c:#58a6ff"><span class="dot"></span>All<span class="n">160</span></button>
-    <button class="chip" data-stage="Lead" style="--c:#6c757d"><span class="dot"></span>Lead<span class="n">1</span></button>
-<button class="chip" data-stage="Assigned" style="--c:#007bff"><span class="dot"></span>Assigned<span class="n">4</span></button>
-<button class="chip" data-stage="Estimate Request" style="--c:#fd7e14"><span class="dot"></span>Estimate Request<span class="n">9</span></button>
-<button class="chip" data-stage="Review 1st Estimate" style="--c:#e83e8c"><span class="dot"></span>Review 1st Estimate<span class="n">2</span></button>
-<button class="chip" data-stage="Estimate Complete" style="--c:#20c997"><span class="dot"></span>Estimate Complete<span class="n">7</span></button>
-<button class="chip" data-stage="In Negotiations" style="--c:#ffc107"><span class="dot"></span>In Negotiations<span class="n">81</span></button>
-<button class="chip" data-stage="Additional Supps" style="--c:#dc3545"><span class="dot"></span>Additional Supps<span class="n">2</span></button>
-<button class="chip" data-stage="Need Assistance" style="--c:#ff4444"><span class="dot"></span>Need Assistance<span class="n">12</span></button>
-<button class="chip" data-stage="Opportunity Won" style="--c:#28a745"><span class="dot"></span>Opportunity Won<span class="n">34</span></button>
-<button class="chip" data-stage="Opportunity Lost" style="--c:#6c757d"><span class="dot"></span>Opportunity Lost<span class="n">8</span></button>
+<button class="chip" data-stage="Lead" style="--c:#6c757d"><span class="dot"></span>Lead<span class="cnt">1</span></button>
+<button class="chip" data-stage="Assigned" style="--c:#007bff"><span class="dot"></span>Assigned<span class="cnt">4</span></button>
+<button class="chip" data-stage="Estimate Request" style="--c:#fd7e14"><span class="dot"></span>Estimate Request<span class="cnt">9</span></button>
+<button class="chip" data-stage="Review 1st Estimate" style="--c:#e83e8c"><span class="dot"></span>Review 1st Estimate<span class="cnt">2</span></button>
+<button class="chip" data-stage="Estimate Complete" style="--c:#20c997"><span class="dot"></span>Estimate Complete<span class="cnt">7</span></button>
+<button class="chip" data-stage="In Negotiations" style="--c:#ffc107"><span class="dot"></span>In Negotiations<span class="cnt">80</span></button>
+<button class="chip" data-stage="Additional Supps" style="--c:#dc3545"><span class="dot"></span>Additional Supps<span class="cnt">2</span></button>
+<button class="chip" data-stage="Need Assistance" style="--c:#ff4444"><span class="dot"></span>Need Assistance<span class="cnt">12</span></button>
+<button class="chip" data-stage="Opportunity Won" style="--c:#28a745"><span class="dot"></span>Opportunity Won<span class="cnt">35</span></button>
+<button class="chip" data-stage="Opportunity Lost" style="--c:#6c757d"><span class="dot"></span>Opportunity Lost<span class="cnt">8</span></button>
   </div>
 
   <div class="controls">
-    <input type="search" id="search" placeholder="Search by client name&hellip;" autocomplete="off">
-    <button class="clearbtn" id="clear">Clear</button>
+    <input id="search" type="text" placeholder="Search by client name&hellip;" autocomplete="off">
+    <button id="clear">Reset</button>
+    <span class="shown" id="shown"></span>
   </div>
-  <div class="count" id="count"></div>
 
-  <table>
-    <thead><tr><th>Client</th><th>Stage</th><th>CRM</th></tr></thead>
-    <tbody id="tbody">
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Client</th><th>Stage</th><th>CRM</th></tr></thead>
+      <tbody id="tbody">
 <tr data-stage="Lead" data-name="reuben hernandez"><td class="name"><a href="https://sa.claimsforce.net/#BloqueClient/view/6983dbdad3f00a1c7" target="_blank" rel="noopener">Reuben Hernandez</a></td><td><span class="badge" style="--c:#6c757d">Lead</span></td><td class="link"><a href="https://sa.claimsforce.net/#BloqueClient/view/6983dbdad3f00a1c7" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr>
 <tr data-stage="Assigned" data-name="ethan landry"><td class="name"><a href="https://sa.claimsforce.net/#BloqueClient/view/690ce76cdf41f149a" target="_blank" rel="noopener">Ethan Landry</a></td><td><span class="badge" style="--c:#007bff">Assigned</span></td><td class="link"><a href="https://sa.claimsforce.net/#BloqueClient/view/690ce76cdf41f149a" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr>
 <tr data-stage="Assigned" data-name="johnny zavala"><td class="name"><a href="https://sa.claimsforce.net/#BloqueClient/view/6a18bf7148277c514" target="_blank" rel="noopener">Johnny Zavala</a></td><td><span class="badge" style="--c:#007bff">Assigned</span></td><td class="link"><a href="https://sa.claimsforce.net/#BloqueClient/view/6a18bf7148277c514" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr>
@@ -119,7 +124,6 @@
 <tr data-stage="In Negotiations" data-name="cary forrester-pitts"><td class="name"><a href="https://sa.claimsforce.net/#BloqueClient/view/690b70ca40757c8c5" target="_blank" rel="noopener">Cary Forrester-Pitts</a></td><td><span class="badge" style="--c:#ffc107">In Negotiations</span></td><td class="link"><a href="https://sa.claimsforce.net/#BloqueClient/view/690b70ca40757c8c5" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr>
 <tr data-stage="In Negotiations" data-name="charles r. bauer"><td class="name"><a href="https://sa.claimsforce.net/#BloqueClient/view/69a6ff1899d76a463" target="_blank" rel="noopener">Charles R. Bauer</a></td><td><span class="badge" style="--c:#ffc107">In Negotiations</span></td><td class="link"><a href="https://sa.claimsforce.net/#BloqueClient/view/69a6ff1899d76a463" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr>
 <tr data-stage="In Negotiations" data-name="charles wolfe"><td class="name"><a href="https://sa.claimsforce.net/#BloqueClient/view/6942e7878ba8490de" target="_blank" rel="noopener">Charles Wolfe</a></td><td><span class="badge" style="--c:#ffc107">In Negotiations</span></td><td class="link"><a href="https://sa.claimsforce.net/#BloqueClient/view/6942e7878ba8490de" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr>
-<tr data-stage="In Negotiations" data-name="dan pellegrino"><td class="name"><a href="https://sa.claimsforce.net/#BloqueClient/view/69eff07cafd3a0702" target="_blank" rel="noopener">Dan Pellegrino</a></td><td><span class="badge" style="--c:#ffc107">In Negotiations</span></td><td class="link"><a href="https://sa.claimsforce.net/#BloqueClient/view/69eff07cafd3a0702" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr>
 <tr data-stage="In Negotiations" data-name="daniel black"><td class="name"><a href="https://sa.claimsforce.net/#BloqueClient/view/69321cf09abf39937" target="_blank" rel="noopener">Daniel Black</a></td><td><span class="badge" style="--c:#ffc107">In Negotiations</span></td><td class="link"><a href="https://sa.claimsforce.net/#BloqueClient/view/69321cf09abf39937" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr>
 <tr data-stage="In Negotiations" data-name="daniella rojas ibarra"><td class="name"><a href="https://sa.claimsforce.net/#BloqueClient/view/68f6cb64642f65a02" target="_blank" rel="noopener">Daniella Rojas Ibarra</a></td><td><span class="badge" style="--c:#ffc107">In Negotiations</span></td><td class="link"><a href="https://sa.claimsforce.net/#BloqueClient/view/68f6cb64642f65a02" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr>
 <tr data-stage="In Negotiations" data-name="diana douma"><td class="name"><a href="https://sa.claimsforce.net/#BloqueClient/view/69f40409038c3c68d" target="_blank" rel="noopener">Diana Douma</a></td><td><span class="badge" style="--c:#ffc107">In Negotiations</span></td><td class="link"><a href="https://sa.claimsforce.net/#BloqueClient/view/69f40409038c3c68d" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr>
@@ -206,6 +210,7 @@
 <tr data-stage="Opportunity Won" data-name="bruce baker"><td class="name"><a href="https://sa.claimsforce.net/#BloqueClient/view/691dea8f981d664be" target="_blank" rel="noopener">Bruce Baker</a></td><td><span class="badge" style="--c:#28a745">Opportunity Won</span></td><td class="link"><a href="https://sa.claimsforce.net/#BloqueClient/view/691dea8f981d664be" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr>
 <tr data-stage="Opportunity Won" data-name="cameron tarango"><td class="name"><a href="https://sa.claimsforce.net/#BloqueClient/view/69053c8079af8b1de" target="_blank" rel="noopener">Cameron Tarango</a></td><td><span class="badge" style="--c:#28a745">Opportunity Won</span></td><td class="link"><a href="https://sa.claimsforce.net/#BloqueClient/view/69053c8079af8b1de" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr>
 <tr data-stage="Opportunity Won" data-name="cheryl stevens"><td class="name"><a href="https://sa.claimsforce.net/#BloqueClient/view/68b089129f0944a52" target="_blank" rel="noopener">Cheryl Stevens</a></td><td><span class="badge" style="--c:#28a745">Opportunity Won</span></td><td class="link"><a href="https://sa.claimsforce.net/#BloqueClient/view/68b089129f0944a52" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr>
+<tr data-stage="Opportunity Won" data-name="dan pellegrino"><td class="name"><a href="https://sa.claimsforce.net/#BloqueClient/view/69eff07cafd3a0702" target="_blank" rel="noopener">Dan Pellegrino</a></td><td><span class="badge" style="--c:#28a745">Opportunity Won</span></td><td class="link"><a href="https://sa.claimsforce.net/#BloqueClient/view/69eff07cafd3a0702" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr>
 <tr data-stage="Opportunity Won" data-name="david watson"><td class="name"><a href="https://sa.claimsforce.net/#BloqueClient/view/69d6e61b67de3ae81" target="_blank" rel="noopener">David Watson</a></td><td><span class="badge" style="--c:#28a745">Opportunity Won</span></td><td class="link"><a href="https://sa.claimsforce.net/#BloqueClient/view/69d6e61b67de3ae81" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr>
 <tr data-stage="Opportunity Won" data-name="dennis naylor"><td class="name"><a href="https://sa.claimsforce.net/#BloqueClient/view/698f527ecfa11351a" target="_blank" rel="noopener">Dennis Naylor</a></td><td><span class="badge" style="--c:#28a745">Opportunity Won</span></td><td class="link"><a href="https://sa.claimsforce.net/#BloqueClient/view/698f527ecfa11351a" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr>
 <tr data-stage="Opportunity Won" data-name="dianna moya"><td class="name"><a href="https://sa.claimsforce.net/#BloqueClient/view/696930e09dc51e071" target="_blank" rel="noopener">Dianna Moya</a></td><td><span class="badge" style="--c:#28a745">Opportunity Won</span></td><td class="link"><a href="https://sa.claimsforce.net/#BloqueClient/view/696930e09dc51e071" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr>
@@ -239,50 +244,45 @@
 <tr data-stage="Opportunity Lost" data-name="juan moreno"><td class="name"><a href="https://sa.claimsforce.net/#BloqueClient/view/6931a887072f69ce5" target="_blank" rel="noopener">Juan Moreno</a></td><td><span class="badge" style="--c:#6c757d">Opportunity Lost</span></td><td class="link"><a href="https://sa.claimsforce.net/#BloqueClient/view/6931a887072f69ce5" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr>
 <tr data-stage="Opportunity Lost" data-name="sharon cooksey"><td class="name"><a href="https://sa.claimsforce.net/#BloqueClient/view/6841fc77e95bb9cf6" target="_blank" rel="noopener">Sharon Cooksey</a></td><td><span class="badge" style="--c:#6c757d">Opportunity Lost</span></td><td class="link"><a href="https://sa.claimsforce.net/#BloqueClient/view/6841fc77e95bb9cf6" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr>
 <tr data-stage="Opportunity Lost" data-name="ubaldo chavarin robles"><td class="name"><a href="https://sa.claimsforce.net/#BloqueClient/view/69860f0750fc41ab7" target="_blank" rel="noopener">Ubaldo Chavarin Robles</a></td><td><span class="badge" style="--c:#6c757d">Opportunity Lost</span></td><td class="link"><a href="https://sa.claimsforce.net/#BloqueClient/view/69860f0750fc41ab7" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr>
-    </tbody>
-  </table>
-  <div class="empty" id="empty" style="display:none">No clients match your filters.</div>
-
-  <footer>Generated automatically from ClaimsForce CRM &bull; assignedUserId 64d50035c79ebf929</footer>
+      </tbody>
+    </table>
+    <div class="empty" id="empty" style="display:none">No clients match your filters.</div>
+  </div>
 </div>
 <script>
-  var rows = Array.prototype.slice.call(document.querySelectorAll('#tbody tr'));
-  var search = document.getElementById('search');
-  var chips = Array.prototype.slice.call(document.querySelectorAll('.chip'));
-  var countEl = document.getElementById('count');
-  var emptyEl = document.getElementById('empty');
-  var activeStage = '__ALL__';
-
+(function(){
+  var search=document.getElementById('search');
+  var clear=document.getElementById('clear');
+  var shown=document.getElementById('shown');
+  var empty=document.getElementById('empty');
+  var rows=Array.prototype.slice.call(document.querySelectorAll('#tbody tr'));
+  var chips=Array.prototype.slice.call(document.querySelectorAll('.chip'));
+  var activeStage=null;
   function apply(){
-    var q = search.value.trim().toLowerCase();
-    var shown = 0;
-    rows.forEach(function(tr){
-      var okStage = activeStage === '__ALL__' || tr.getAttribute('data-stage') === activeStage;
-      var okName = !q || tr.getAttribute('data-name').indexOf(q) !== -1;
-      var vis = okStage && okName;
-      tr.style.display = vis ? '' : 'none';
-      if(vis) shown++;
+    var q=search.value.trim().toLowerCase();
+    var n=0;
+    rows.forEach(function(r){
+      var okStage=!activeStage||r.getAttribute('data-stage')===activeStage;
+      var okName=!q||r.getAttribute('data-name').indexOf(q)!==-1;
+      var vis=okStage&&okName;
+      r.style.display=vis?'':'none';
+      if(vis)n++;
     });
-    countEl.textContent = 'Showing ' + shown + ' of ' + rows.length + ' clients';
-    emptyEl.style.display = shown ? 'none' : 'block';
+    shown.textContent=n+' of '+rows.length+' shown';
+    empty.style.display=n?'none':'block';
   }
-  chips.forEach(function(ch){
-    ch.addEventListener('click', function(){
-      chips.forEach(function(c){c.classList.remove('active');});
-      ch.classList.add('active');
-      activeStage = ch.getAttribute('data-stage');
+  chips.forEach(function(c){
+    c.addEventListener('click',function(){
+      var s=c.getAttribute('data-stage');
+      if(activeStage===s){activeStage=null;c.classList.remove('active');}
+      else{chips.forEach(function(x){x.classList.remove('active')});activeStage=s;c.classList.add('active');}
       apply();
     });
   });
-  search.addEventListener('input', apply);
-  document.getElementById('clear').addEventListener('click', function(){
-    search.value='';
-    chips.forEach(function(c){c.classList.remove('active');});
-    chips[0].classList.add('active');
-    activeStage='__ALL__';
-    apply();
-  });
+  search.addEventListener('input',apply);
+  clear.addEventListener('click',function(){search.value='';activeStage=null;chips.forEach(function(x){x.classList.remove('active')});apply();});
   apply();
+})();
 </script>
 </body>
 </html>
