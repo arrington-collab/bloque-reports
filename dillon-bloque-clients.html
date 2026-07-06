@@ -1,211 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dillon Martella — Bloque Client Assignments</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dillon Martella — BloqueClient Assignments</title>
 <style>
-  :root {
-    --bg: #12141a;
-    --panel: #1b1e27;
-    --panel2: #232733;
-    --text: #e8eaf0;
-    --muted: #8b91a3;
-    --border: #2e3340;
-    --accent: #4dabf7;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    padding: 24px;
-  }
-  header { margin-bottom: 20px; }
-  h1 { font-size: 22px; font-weight: 600; }
-  .subtitle { color: var(--muted); font-size: 13px; margin-top: 4px; }
-  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0; }
-  .chip {
-    display: inline-flex; align-items: center; gap: 6px;
-    background: var(--panel); border: 1px solid var(--border);
-    border-radius: 16px; padding: 5px 12px; font-size: 12.5px;
-    cursor: pointer; user-select: none; transition: all .15s;
-  }
-  .chip:hover { background: var(--panel2); }
-  .chip.active { border-color: var(--accent); background: var(--panel2); }
-  .chip .dot { width: 9px; height: 9px; border-radius: 50%; display: inline-block; }
-  .chip .count { color: var(--muted); font-weight: 600; }
-  .controls { display: flex; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; }
-  input[type="search"] {
-    flex: 1; min-width: 220px; background: var(--panel);
-    border: 1px solid var(--border); border-radius: 8px;
-    color: var(--text); padding: 9px 13px; font-size: 14px; outline: none;
-  }
-  input[type="search"]:focus { border-color: var(--accent); }
-  table { width: 100%; border-collapse: collapse; background: var(--panel); border-radius: 10px; overflow: hidden; }
-  th, td { text-align: left; padding: 11px 15px; font-size: 14px; }
-  th { background: var(--panel2); color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .05em; }
-  tr { border-bottom: 1px solid var(--border); }
-  tr:last-child { border-bottom: none; }
-  tbody tr:hover { background: var(--panel2); }
-  a { color: var(--accent); text-decoration: none; }
-  a:hover { text-decoration: underline; }
-  .badge {
-    display: inline-block; padding: 3px 10px; border-radius: 12px;
-    font-size: 12px; font-weight: 600; color: #fff;
-  }
-  .crm-link { font-size: 12.5px; }
-  .empty { text-align: center; color: var(--muted); padding: 30px; }
-  .total { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+:root{--bg:#0d1117;--panel:#161b22;--border:#30363d;--text:#e6edf3;--muted:#8b949e;--accent:#58a6ff;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.5}
+.wrap{max-width:1000px;margin:0 auto;padding:24px 16px 60px}
+header h1{margin:0 0 4px;font-size:1.6rem}
+.sub{color:var(--muted);font-size:.9rem;margin-bottom:20px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.chip{border:none;border-radius:999px;padding:6px 14px;font-size:.8rem;font-weight:600;cursor:pointer;opacity:.9;transition:.15s}
+.chip:hover{opacity:1;transform:translateY(-1px)}
+.chip.active{outline:2px solid var(--text);opacity:1}
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}
+input[type=search],select{background:var(--panel);border:1px solid var(--border);color:var(--text);padding:9px 12px;border-radius:8px;font-size:.9rem}
+input[type=search]{flex:1;min-width:200px}
+.count{color:var(--muted);font-size:.85rem;align-self:center}
+table{width:100%;border-collapse:collapse;background:var(--panel);border:1px solid var(--border);border-radius:10px;overflow:hidden}
+th,td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--border);font-size:.9rem}
+th{background:#1c2230;color:var(--muted);text-transform:uppercase;font-size:.72rem;letter-spacing:.04em;position:sticky;top:0}
+tr:last-child td{border-bottom:none}
+tbody tr:hover{background:#1c2230}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+.crm{font-size:.8rem;color:var(--muted)}
+.badge{display:inline-block;padding:3px 10px;border-radius:6px;font-size:.75rem;font-weight:600;white-space:nowrap}
+footer{margin-top:24px;color:var(--muted);font-size:.8rem;text-align:center}
 </style>
 </head>
 <body>
+<div class="wrap">
 <header>
-  <h1>Dillon Martella — Bloque Client Assignments</h1>
-  <div class="subtitle">Last updated: July 2, 2026 (auto-generated from ClaimsForce CRM)</div>
+<h1>Dillon Martella</h1>
+<div class="sub">BloqueClient assignments &middot; 62 total records &middot; Last updated July 06, 2026 at 04:20 PM</div>
 </header>
-
-<div class="chips" id="chips"></div>
-
+<div class="chips" id="chips"><button class="chip" data-stage="Estimate Request" style="background:#fd7e14;color:#fff">Estimate Request <b>6</b></button><button class="chip" data-stage="Estimate Review" style="background:#6f42c1;color:#fff">Estimate Review <b>1</b></button><button class="chip" data-stage="In Negotiations" style="background:#ffc107;color:#212529">In Negotiations <b>27</b></button><button class="chip" data-stage="Need Assistance" style="background:#ff4444;color:#fff">Need Assistance <b>11</b></button><button class="chip" data-stage="Opportunity Won" style="background:#28a745;color:#fff">Opportunity Won <b>17</b></button></div>
 <div class="controls">
-  <input type="search" id="search" placeholder="Search clients…">
+<input type="search" id="q" placeholder="Search client name...">
+<select id="stageSel"><option value="">All stages</option><option value="Estimate Request">Estimate Request</option><option value="Estimate Review">Estimate Review</option><option value="In Negotiations">In Negotiations</option><option value="Need Assistance">Need Assistance</option><option value="Opportunity Won">Opportunity Won</option></select>
+<span class="count" id="count"></span>
 </div>
-
-<div class="total" id="total"></div>
-
 <table>
-  <thead><tr><th>Client</th><th>Stage</th><th>CRM</th></tr></thead>
-  <tbody id="rows"></tbody>
+<thead><tr><th>Client</th><th>Stage</th><th>CRM</th></tr></thead>
+<tbody id="rows"><tr data-stage="Estimate Request" data-name="edward amack"><td><a href="https://sa.claimsforce.net/#BloqueClient/view/6a3467bc2257eafc2" target="_blank" rel="noopener">Edward Amack</a></td><td><span class="badge" style="background:#fd7e14;color:#fff">Estimate Request</span></td><td><a class="crm" href="https://sa.claimsforce.net/#BloqueClient/view/6a3467bc2257eafc2" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr><tr data-stage="Estimate Request" data-name="eric bolek"><td><a href="https://sa.claimsforce.net/#BloqueClient/view/6a4572d61fed4b58d" target="_blank" rel="noopener">Eric Bolek</a></td><td><span class="badge" style="background:#fd7e14;color:#fff">Estimate Request</span></td><td><a class="crm" href="https://sa.claimsforce.net/#BloqueClient/view/6a4572d61fed4b58d" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr><tr data-stage="Estimate Request" data-name="lucas nicholas"><td><a href="https://sa.claimsforce.net/#BloqueClient/view/6a3bfeb824338cede" target="_blank" rel="noopener">Lucas Nicholas</a></td><td><span class="badge" style="background:#fd7e14;color:#fff">Estimate Request</span></td><td><a class="crm" href="https://sa.claimsforce.net/#BloqueClient/view/6a3bfeb824338cede" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr><tr data-stage="Estimate Request" data-name="matt kim"><td><a href="https://sa.claimsforce.net/#BloqueClient/view/696564deac506a2fb" target="_blank" rel="noopener">Matt Kim</a></td><td><span class="badge" style="background:#fd7e14;color:#fff">Estimate Request</span></td><td><a class="crm" href="https://sa.claimsforce.net/#BloqueClient/view/696564deac506a2fb" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr><tr data-stage="Estimate Request" data-name="miguel silva"><td><a href="https://sa.claimsforce.net/#BloqueClient/view/69bb27801e2f83f72" target="_blank" rel="noopener">Miguel Silva</a></td><td><span class="badge" style="background:#fd7e14;color:#fff">Estimate Request</span></td><td><a class="crm" href="https://sa.claimsforce.net/#BloqueClient/view/69bb27801e2f83f72" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr><tr data-stage="Estimate Request" data-name="shawn walker"><td><a href="https://sa.claimsforce.net/#BloqueClient/view/6a04c9f0258002323" target="_blank" rel="noopener">Shawn Walker</a></td><td><span class="badge" style="background:#fd7e14;color:#fff">Estimate Request</span></td><td><a class="crm" href="https://sa.claimsforce.net/#BloqueClient/view/6a04c9f0258002323" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr><tr data-stage="Estimate Review" data-name="christina molina"><td><a href="https://sa.claimsforce.net/#BloqueClient/view/6a0f20b97ce433b63" target="_blank" rel="noopener">Christina Molina</a></td><td><span class="badge" style="background:#6f42c1;color:#fff">Estimate Review</span></td><td><a class="crm" href="https://sa.claimsforce.net/#BloqueClient/view/6a0f20b97ce433b63" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr><tr data-stage="In Negotiations" data-name="ann tromba"><td><a href="https://sa.claimsforce.net/#BloqueClient/view/698676c37918ec360" target="_blank" rel="noopener">Ann Tromba</a></td><td><span class="badge" style="background:#ffc107;color:#212529">In Negotiations</span></td><td><a class="crm" href="https://sa.claimsforce.net/#BloqueClient/view/698676c37918ec360" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr><tr data-stage="In Negotiations" data-name="barbara mills"><td><a href="https://sa.claimsforce.net/#BloqueClient/view/68f94df1d581086fb" target="_blank" rel="noopener">Barbara Mills</a></td><td><span class="badge" style="background:#ffc107;color:#212529">In Negotiations</span></td><td><a class="crm" href="https://sa.claimsforce.net/#BloqueClient/view/68f94df1d581086fb" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr><tr data-stage="In Negotiations" data-name="darin jasper"><td><a href="https://sa.claimsforce.net/#BloqueClient/view/691dee3930c31dd92" target="_blank" rel="noopener">Darin Jasper</a></td><td><span class="badge" style="background:#ffc107;color:#212529">In Negotiations</span></td><td><a class="crm" href="https://sa.claimsforce.net/#BloqueClient/view/691dee3930c31dd92" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr><tr data-stage="In Negotiations" data-name="david wilkinson"><td><a href="https://sa.claimsforce.net/#BloqueClient/view/6930b1937ff4443f3" target="_blank" rel="noopener">David Wilkinson</a></td><td><span class="badge" style="background:#ffc107;color:#212529">In Negotiations</span></td><td><a class="crm" href="https://sa.claimsforce.net/#BloqueClient/view/6930b1937ff4443f3" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr><tr data-stage="In Negotiations" data-name="dondrell swanson"><td><a href="https://sa.claimsforce.net/#BloqueClient/view/69972ee426fcd918e" target="_blank" rel="noopener">Dondrell Swanson</a></td><td><span class="badge" style="background:#ffc107;color:#212529">In Negotiations</span></td><td><a class="crm" href="https://sa.claimsforce.net/#BloqueClient/view/69972ee426fcd918e" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr><tr data-stage="In Negotiations" data-name="dori stoesz"><td><a href="https://sa.claimsforce.net/#BloqueClient/view/69bc680194eabf70e" target="_blank" rel="noopener">Dori Stoesz</a></td><td><span class="badge" style="background:#ffc107;color:#212529">In Negotiations</span></td><td><a class="crm" href="https://sa.claimsforce.net/#BloqueClient/view/69bc680194eabf70e" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr><tr data-stage="In Negotiations" data-name="elmer mendoza"><td><a href="https://sa.claimsforce.net/#BloqueClient/view/69615d5fd61da1768" target="_blank" rel="noopener">Elmer Mendoza</a></td><td><span class="badge" style="background:#ffc107;color:#212529">In Negotiations</span></td><td><a class="crm" href="https://sa.claimsforce.net/#BloqueClient/view/69615d5fd61da1768" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr><tr data-stage="In Negotiations" data-name="gary rinear"><td><a href="https://sa.claimsforce.net/#BloqueClient/view/69408ede23a12c952" target="_blank" rel="noopener">Gary Rinear</a></td><td><span class="badge" style="background:#ffc107;color:#212529">In Negotiations</span></td><td><a class="crm" href="https://sa.claimsforce.net/#BloqueClient/view/69408ede23a12c952" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr><tr data-stage="In Negotiations" data-name="gilbert phillip stewart"><td><a href="https://sa.claimsforce.net/#BloqueClient/view/69b1f2dac04efb1ba" target="_blank" rel="noopener">Gilbert Phillip Stewart</a></td><td><span class="badge" style="background:#ffc107;color:#212529">In Negotiations</span></td><td><a class="crm" href="https://sa.claimsforce.net/#BloqueClient/view/69b1f2dac04efb1ba" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr><tr data-stage="In Negotiations" data-name="heather potter"><td><a href="https://sa.claimsforce.net/#BloqueClient/view/69b9d95caf5bebf06" target="_blank" rel="noopener">Heather Potter</a></td><td><span class="badge" style="background:#ffc107;color:#212529">In Negotiations</span></td><td><a class="crm" href="https://sa.claimsforce.net/#BloqueClient/view/69b9d95caf5bebf06" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr><tr data-stage="In Negotiations" data-name="james motte"><td><a href="https://sa.claimsforce.net/#BloqueClient/view/6939a48d5e7fec499" target="_blank" rel="noopener">James Motte</a></td><td><span class="badge" style="background:#ffc107;color:#212529">In Negotiations</span></td><td><a class="crm" href="https://sa.claimsforce.net/#BloqueClient/view/6939a48d5e7fec499" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr><tr data-stage="In Negotiations" data-name="james phelps"><td><a href="https://sa.claimsforce.net/#BloqueClient/view/68fab276135ba4f76" target="_blank" rel="noopener">James Phelps</a></td><td><span class="badge" style="background:#ffc107;color:#212529">In Negotiations</span></td><td><a class="crm" href="https://sa.claimsforce.net/#BloqueClient/view/68fab276135ba4f76" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr><tr data-stage="In Negotiations" data-name="jaylin sicilia"><td><a href="https://sa.claimsforce.net/#BloqueClient/view/699791da90470af76" target="_blank" rel="noopener">Jaylin Sicilia</a></td><td><span class="badge" style="background:#ffc107;color:#212529">In Negotiations</span></td><td><a class="crm" href="https://sa.claimsforce.net/#BloqueClient/view/699791da90470af76" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr><tr data-stage="In Negotiations" data-name="jessica sipe"><td><a href="https://sa.claimsforce.net/#BloqueClient/view/69c41648db98bc314" target="_blank" rel="noopener">Jessica Sipe</a></td><td><span class="badge" style="background:#ffc107;color:#212529">In Negotiations</span></td><td><a class="crm" href="https://sa.claimsforce.net/#BloqueClient/view/69c41648db98bc314" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr><tr data-stage="In Negotiations" data-name="kamila perez"><td><a href="https://sa.claimsforce.net/#BloqueClient/view/69a5b09de52d802da" target="_blank" rel="noopener">Kamila Perez</a></td><td><span class="badge" style="background:#ffc107;color:#212529">In Negotiations</span></td><td><a class="crm" href="https://sa.claimsforce.net/#BloqueClient/view/69a5b09de52d802da" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr><tr data-stage="In Negotiations" data-name="katherine hurd"><td><a href="https://sa.claimsforce.net/#BloqueClient/view/69b898529c7d5b19a" target="_blank" rel="noopener">Katherine Hurd</a></td><td><span class="badge" style="background:#ffc107;color:#212529">In Negotiations</span></td><td><a class="crm" href="https://sa.claimsforce.net/#BloqueClient/view/69b898529c7d5b19a" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr><tr data-stage="In Negotiations" data-name="kevin moore"><td><a href="https://sa.claimsforce.net/#BloqueClient/view/6949bca59e8722d30" target="_blank" rel="noopener">Kevin Moore</a></td><td><span class="badge" style="background:#ffc107;color:#212529">In Negotiations</span></td><td><a class="crm" href="https://sa.claimsforce.net/#BloqueClient/view/6949bca59e8722d30" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr><tr data-stage="In Negotiations" data-name="kevin richardson"><td><a href="https://sa.claimsforce.net/#BloqueClient/view/6980bac30ca565e86" target="_blank" rel="noopener">Kevin Richardson</a></td><td><span class="badge" style="background:#ffc107;color:#212529">In Negotiations</span></td><td><a class="crm" href="https://sa.claimsforce.net/#BloqueClient/view/6980bac30ca565e86" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr><tr data-stage="In Negotiations" data-name="linh tompkins"><td><a href="https://sa.claimsforce.net/#BloqueClient/view/69b8807194925ff47" target="_blank" rel="noopener">Linh Tompkins</a></td><td><span class="badge" style="background:#ffc107;color:#212529">In Negotiations</span></td><td><a class="crm" href="https://sa.claimsforce.net/#BloqueClient/view/69b8807194925ff47" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr><tr data-stage="In Negotiations" data-name="logan steward"><td><a href="https://sa.claimsforce.net/#BloqueClient/view/68f1135a4cb591dcf" target="_blank" rel="noopener">Logan Steward</a></td><td><span class="badge" style="background:#ffc107;color:#212529">In Negotiations</span></td><td><a class="crm" href="https://sa.claimsforce.net/#BloqueClient/view/68f1135a4cb591dcf" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr><tr data-stage="In Negotiations" data-name="ramon navarro"><td><a href="https://sa.claimsforce.net/#BloqueClient/view/690388d3194d17adb" target="_blank" rel="noopener">Ramon Navarro</a></td><td><span class="badge" style="background:#ffc107;color:#212529">In Negotiations</span></td><td><a class="crm" href="https://sa.claimsforce.net/#BloqueClient/view/690388d3194d17adb" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr><tr data-stage="In Negotiations" data-name="richard core"><td><a href="https://sa.claimsforce.net/#BloqueClient/view/69c15cbc93389c11e" target="_blank" rel="noopener">Richard Core</a></td><td><span class="badge" style="background:#ffc107;color:#212529">In Negotiations</span></td><td><a class="crm" href="https://sa.claimsforce.net/#BloqueClient/view/69c15cbc93389c11e" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr><tr data-stage="In Negotiations" data-name="richard long"><td><a href="https://sa.claimsforce.net/#BloqueClient/view/691e055b14901f121" target="_blank" rel="noopener">Richard Long</a></td><td><span class="badge" style="background:#ffc107;color:#212529">In Negotiations</span></td><td><a class="crm" href="https://sa.claimsforce.net/#BloqueClient/view/691e055b14901f121" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr><tr data-stage="In Negotiations" data-name="rito orrantia"><td><a href="https://sa.claimsforce.net/#BloqueClient/view/69cd4c12273634c1f" target="_blank" rel="noopener">Rito Orrantia</a></td><td><span class="badge" style="background:#ffc107;color:#212529">In Negotiations</span></td><td><a class="crm" href="https://sa.claimsforce.net/#BloqueClient/view/69cd4c12273634c1f" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr><tr data-stage="In Negotiations" data-name="tanner marvin fosmire"><td><a href="https://sa.claimsforce.net/#BloqueClient/view/6993a787c7e18264f" target="_blank" rel="noopener">Tanner Marvin Fosmire</a></td><td><span class="badge" style="background:#ffc107;color:#212529">In Negotiations</span></td><td><a class="crm" href="https://sa.claimsforce.net/#BloqueClient/view/6993a787c7e18264f" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr><tr data-stage="In Negotiations" data-name="waldher seminario"><td><a href="https://sa.claimsforce.net/#BloqueClient/view/6993aa03c445151bf" target="_blank" rel="noopener">Waldher Seminario</a></td><td><span class="badge" style="background:#ffc107;color:#212529">In Negotiations</span></td><td><a class="crm" href="https://sa.claimsforce.net/#BloqueClient/view/6993aa03c445151bf" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr><tr data-stage="In Negotiations" data-name="william werner"><td><a href="https://sa.claimsforce.net/#BloqueClient/view/6903824649d7fcc08" target="_blank" rel="noopener">William Werner</a></td><td><span class="badge" style="background:#ffc107;color:#212529">In Negotiations</span></td><td><a class="crm" href="https://sa.claimsforce.net/#BloqueClient/view/6903824649d7fcc08" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr><tr data-stage="Need Assistance" data-name="aurora garcia"><td><a href="https://sa.claimsforce.net/#BloqueClient/view/68f2a70ed01f98aa6" target="_blank" rel="noopener">Aurora Garcia</a></td><td><span class="badge" style="background:#ff4444;color:#fff">Need Assistance</span></td><td><a class="crm" href="https://sa.claimsforce.net/#BloqueClient/view/68f2a70ed01f98aa6" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr><tr data-stage="Need Assistance" data-name="austin jardine"><td><a href="https://sa.claimsforce.net/#BloqueClient/view/68ed21f098c79a724" target="_blank" rel="noopener">Austin Jardine</a></td><td><span class="badge" style="background:#ff4444;color:#fff">Need Assistance</span></td><td><a class="crm" href="https://sa.claimsforce.net/#BloqueClient/view/68ed21f098c79a724" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr><tr data-stage="Need Assistance" data-name="chelsea benton"><td><a href="https://sa.claimsforce.net/#BloqueClient/view/69a7520d78416bf88" target="_blank" rel="noopener">Chelsea Benton</a></td><td><span class="badge" style="background:#ff4444;color:#fff">Need Assistance</span></td><td><a class="crm" href="https://sa.claimsforce.net/#BloqueClient/view/69a7520d78416bf88" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr><tr data-stage="Need Assistance" data-name="christine deruvo (vip)"><td><a href="https://sa.claimsforce.net/#BloqueClient/view/68ed26fe1b0c9d56e" target="_blank" rel="noopener">Christine DeRuvo (VIP)</a></td><td><span class="badge" style="background:#ff4444;color:#fff">Need Assistance</span></td><td><a class="crm" href="https://sa.claimsforce.net/#BloqueClient/view/68ed26fe1b0c9d56e" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr><tr data-stage="Need Assistance" data-name="elexis garcia"><td><a href="https://sa.claimsforce.net/#BloqueClient/view/68dd6ccebd6680d8f" target="_blank" rel="noopener">Elexis Garcia</a></td><td><span class="badge" style="background:#ff4444;color:#fff">Need Assistance</span></td><td><a class="crm" href="https://sa.claimsforce.net/#BloqueClient/view/68dd6ccebd6680d8f" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr><tr data-stage="Need Assistance" data-name="jan chrisner"><td><a href="https://sa.claimsforce.net/#BloqueClient/view/69556d9bd302abc9c" target="_blank" rel="noopener">Jan Chrisner</a></td><td><span class="badge" style="background:#ff4444;color:#fff">Need Assistance</span></td><td><a class="crm" href="https://sa.claimsforce.net/#BloqueClient/view/69556d9bd302abc9c" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr><tr data-stage="Need Assistance" data-name="jonathan elias"><td><a href="https://sa.claimsforce.net/#BloqueClient/view/6930c2b6b433010ed" target="_blank" rel="noopener">Jonathan Elias</a></td><td><span class="badge" style="background:#ff4444;color:#fff">Need Assistance</span></td><td><a class="crm" href="https://sa.claimsforce.net/#BloqueClient/view/6930c2b6b433010ed" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr><tr data-stage="Need Assistance" data-name="lynda lydick"><td><a href="https://sa.claimsforce.net/#BloqueClient/view/6942cd28bd69b185e" target="_blank" rel="noopener">Lynda Lydick</a></td><td><span class="badge" style="background:#ff4444;color:#fff">Need Assistance</span></td><td><a class="crm" href="https://sa.claimsforce.net/#BloqueClient/view/6942cd28bd69b185e" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr><tr data-stage="Need Assistance" data-name="renee dominguez"><td><a href="https://sa.claimsforce.net/#BloqueClient/view/69725117b5731a8ec" target="_blank" rel="noopener">Renee Dominguez</a></td><td><span class="badge" style="background:#ff4444;color:#fff">Need Assistance</span></td><td><a class="crm" href="https://sa.claimsforce.net/#BloqueClient/view/69725117b5731a8ec" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr><tr data-stage="Need Assistance" data-name="richard mcqueen"><td><a href="https://sa.claimsforce.net/#BloqueClient/view/6903849a8b53a40ed" target="_blank" rel="noopener">Richard McQueen</a></td><td><span class="badge" style="background:#ff4444;color:#fff">Need Assistance</span></td><td><a class="crm" href="https://sa.claimsforce.net/#BloqueClient/view/6903849a8b53a40ed" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr><tr data-stage="Need Assistance" data-name="steven emery"><td><a href="https://sa.claimsforce.net/#BloqueClient/view/697b8abd5dc1190a0" target="_blank" rel="noopener">Steven Emery</a></td><td><span class="badge" style="background:#ff4444;color:#fff">Need Assistance</span></td><td><a class="crm" href="https://sa.claimsforce.net/#BloqueClient/view/697b8abd5dc1190a0" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr><tr data-stage="Opportunity Won" data-name="adan vargas"><td><a href="https://sa.claimsforce.net/#BloqueClient/view/69ef941d1626f0c4f" target="_blank" rel="noopener">Adan Vargas</a></td><td><span class="badge" style="background:#28a745;color:#fff">Opportunity Won</span></td><td><a class="crm" href="https://sa.claimsforce.net/#BloqueClient/view/69ef941d1626f0c4f" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr><tr data-stage="Opportunity Won" data-name="ariel garcia"><td><a href="https://sa.claimsforce.net/#BloqueClient/view/696023f2e46a15bbd" target="_blank" rel="noopener">Ariel Garcia</a></td><td><span class="badge" style="background:#28a745;color:#fff">Opportunity Won</span></td><td><a class="crm" href="https://sa.claimsforce.net/#BloqueClient/view/696023f2e46a15bbd" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr><tr data-stage="Opportunity Won" data-name="ema delgado"><td><a href="https://sa.claimsforce.net/#BloqueClient/view/69666093660930ab3" target="_blank" rel="noopener">Ema Delgado</a></td><td><span class="badge" style="background:#28a745;color:#fff">Opportunity Won</span></td><td><a class="crm" href="https://sa.claimsforce.net/#BloqueClient/view/69666093660930ab3" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr><tr data-stage="Opportunity Won" data-name="john schmiesing"><td><a href="https://sa.claimsforce.net/#BloqueClient/view/68ed88d78af2e44aa" target="_blank" rel="noopener">John Schmiesing</a></td><td><span class="badge" style="background:#28a745;color:#fff">Opportunity Won</span></td><td><a class="crm" href="https://sa.claimsforce.net/#BloqueClient/view/68ed88d78af2e44aa" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr><tr data-stage="Opportunity Won" data-name="madison morgan"><td><a href="https://sa.claimsforce.net/#BloqueClient/view/699340d0cc66f1bb2" target="_blank" rel="noopener">Madison Morgan</a></td><td><span class="badge" style="background:#28a745;color:#fff">Opportunity Won</span></td><td><a class="crm" href="https://sa.claimsforce.net/#BloqueClient/view/699340d0cc66f1bb2" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr><tr data-stage="Opportunity Won" data-name="maria corrales"><td><a href="https://sa.claimsforce.net/#BloqueClient/view/69692ac178cf93cbb" target="_blank" rel="noopener">Maria Corrales</a></td><td><span class="badge" style="background:#28a745;color:#fff">Opportunity Won</span></td><td><a class="crm" href="https://sa.claimsforce.net/#BloqueClient/view/69692ac178cf93cbb" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr><tr data-stage="Opportunity Won" data-name="mary alice robinson"><td><a href="https://sa.claimsforce.net/#BloqueClient/view/68ee9690a3a88983e" target="_blank" rel="noopener">Mary Alice Robinson</a></td><td><span class="badge" style="background:#28a745;color:#fff">Opportunity Won</span></td><td><a class="crm" href="https://sa.claimsforce.net/#BloqueClient/view/68ee9690a3a88983e" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr><tr data-stage="Opportunity Won" data-name="max armstrong"><td><a href="https://sa.claimsforce.net/#BloqueClient/view/6924d101824b2d64a" target="_blank" rel="noopener">Max Armstrong</a></td><td><span class="badge" style="background:#28a745;color:#fff">Opportunity Won</span></td><td><a class="crm" href="https://sa.claimsforce.net/#BloqueClient/view/6924d101824b2d64a" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr><tr data-stage="Opportunity Won" data-name="melissa bahe-garcia"><td><a href="https://sa.claimsforce.net/#BloqueClient/view/69aee2d261d707315" target="_blank" rel="noopener">Melissa Bahe-Garcia</a></td><td><span class="badge" style="background:#28a745;color:#fff">Opportunity Won</span></td><td><a class="crm" href="https://sa.claimsforce.net/#BloqueClient/view/69aee2d261d707315" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr><tr data-stage="Opportunity Won" data-name="mindy greene"><td><a href="https://sa.claimsforce.net/#BloqueClient/view/6939e78a24b8b675c" target="_blank" rel="noopener">Mindy Greene</a></td><td><span class="badge" style="background:#28a745;color:#fff">Opportunity Won</span></td><td><a class="crm" href="https://sa.claimsforce.net/#BloqueClient/view/6939e78a24b8b675c" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr><tr data-stage="Opportunity Won" data-name="perris henderson"><td><a href="https://sa.claimsforce.net/#BloqueClient/view/6969081cebcb4b9c4" target="_blank" rel="noopener">Perris Henderson</a></td><td><span class="badge" style="background:#28a745;color:#fff">Opportunity Won</span></td><td><a class="crm" href="https://sa.claimsforce.net/#BloqueClient/view/6969081cebcb4b9c4" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr><tr data-stage="Opportunity Won" data-name="ramon aldecoa"><td><a href="https://sa.claimsforce.net/#BloqueClient/view/6a3ad7f3830198ecf" target="_blank" rel="noopener">Ramon Aldecoa</a></td><td><span class="badge" style="background:#28a745;color:#fff">Opportunity Won</span></td><td><a class="crm" href="https://sa.claimsforce.net/#BloqueClient/view/6a3ad7f3830198ecf" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr><tr data-stage="Opportunity Won" data-name="sally wang"><td><a href="https://sa.claimsforce.net/#BloqueClient/view/699ddfe4a3348cd41" target="_blank" rel="noopener">Sally Wang</a></td><td><span class="badge" style="background:#28a745;color:#fff">Opportunity Won</span></td><td><a class="crm" href="https://sa.claimsforce.net/#BloqueClient/view/699ddfe4a3348cd41" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr><tr data-stage="Opportunity Won" data-name="sandy zamora"><td><a href="https://sa.claimsforce.net/#BloqueClient/view/68bb325598bb33866" target="_blank" rel="noopener">Sandy Zamora</a></td><td><span class="badge" style="background:#28a745;color:#fff">Opportunity Won</span></td><td><a class="crm" href="https://sa.claimsforce.net/#BloqueClient/view/68bb325598bb33866" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr><tr data-stage="Opportunity Won" data-name="sharon mcqueen"><td><a href="https://sa.claimsforce.net/#BloqueClient/view/69861021aa23c70b0" target="_blank" rel="noopener">Sharon McQueen</a></td><td><span class="badge" style="background:#28a745;color:#fff">Opportunity Won</span></td><td><a class="crm" href="https://sa.claimsforce.net/#BloqueClient/view/69861021aa23c70b0" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr><tr data-stage="Opportunity Won" data-name="socorro martinez"><td><a href="https://sa.claimsforce.net/#BloqueClient/view/69d7d98e5a6e7b8df" target="_blank" rel="noopener">Socorro Martinez</a></td><td><span class="badge" style="background:#28a745;color:#fff">Opportunity Won</span></td><td><a class="crm" href="https://sa.claimsforce.net/#BloqueClient/view/69d7d98e5a6e7b8df" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr><tr data-stage="Opportunity Won" data-name="tommy kendrick cazador"><td><a href="https://sa.claimsforce.net/#BloqueClient/view/69276c675869a87fe" target="_blank" rel="noopener">Tommy Kendrick Cazador</a></td><td><span class="badge" style="background:#28a745;color:#fff">Opportunity Won</span></td><td><a class="crm" href="https://sa.claimsforce.net/#BloqueClient/view/69276c675869a87fe" target="_blank" rel="noopener">Open in CRM &#8599;</a></td></tr></tbody>
 </table>
-
+<footer>Data pulled live from ClaimsForce CRM. Auto-generated report.</footer>
+</div>
 <script>
-const CRM_BASE = "https://sa.claimsforce.net/#BloqueClient/view/";
-const STAGE_ORDER = ["Lead","Opportunity","Assigned","Estimate Request","Review 1st Estimate","Estimate Review","Estimate Complete","In Negotiations","Additional Supps","Need Assistance","Opportunity Won","Opportunity Lost"];
-const STAGE_COLORS = {
-  "Lead":"#6c757d","Opportunity":"#17a2b8","Assigned":"#007bff",
-  "Estimate Request":"#fd7e14","Review 1st Estimate":"#e83e8c",
-  "Estimate Review":"#6f42c1","Estimate Complete":"#20c997",
-  "In Negotiations":"#ffc107","Additional Supps":"#dc3545",
-  "Need Assistance":"#ff4444","Opportunity Won":"#28a745","Opportunity Lost":"#6c757d"
-};
-// id|name|stage
-const RAW = [
-"6a4572d61fed4b58d|Eric Bolek|Estimate Request",
-"6a3bfeb824338cede|Lucas Nicholas|Estimate Request",
-"6a3ad7f3830198ecf|Ramon Aldecoa|Opportunity Won",
-"6a3467bc2257eafc2|Edward Amack|Estimate Request",
-"6a0f20b97ce433b63|Christina Molina|Estimate Review",
-"6a04c9f0258002323|Shawn Walker|Estimate Request",
-"69ef941d1626f0c4f|Adan Vargas|Opportunity Won",
-"69d7d98e5a6e7b8df|Socorro Martinez|Opportunity Won",
-"69cd4c12273634c1f|Rito Orrantia|In Negotiations",
-"69c41648db98bc314|Jessica Sipe|In Negotiations",
-"69c15cbc93389c11e|Richard Core|In Negotiations",
-"69bc680194eabf70e|Dori Stoesz|In Negotiations",
-"69bb27801e2f83f72|Miguel Silva|Estimate Request",
-"69b9d95caf5bebf06|Heather Potter|In Negotiations",
-"69b898529c7d5b19a|Katherine Hurd|In Negotiations",
-"69b8807194925ff47|Linh Tompkins|In Negotiations",
-"69b1f2dac04efb1ba|Gilbert Phillip Stewart|In Negotiations",
-"69aee2d261d707315|Melissa Bahe-Garcia|Opportunity Won",
-"69a7520d78416bf88|Chelsea Benton|Need Assistance",
-"69a5b09de52d802da|Kamila Perez|In Negotiations",
-"699ddfe4a3348cd41|Sally Wang|Opportunity Won",
-"699791da90470af76|Jaylin Sicilia|In Negotiations",
-"69972ee426fcd918e|Dondrell Swanson|In Negotiations",
-"6993aa03c445151bf|Waldher Seminario|In Negotiations",
-"6993a787c7e18264f|Tanner Marvin Fosmire|In Negotiations",
-"699340d0cc66f1bb2|Madison Morgan|Opportunity Won",
-"698676c37918ec360|Ann Tromba|In Negotiations",
-"69861021aa23c70b0|Sharon McQueen|Opportunity Won",
-"6980bac30ca565e86|Kevin Richardson|In Negotiations",
-"697b8abd5dc1190a0|Steven Emery|Need Assistance",
-"69725117b5731a8ec|Renee Dominguez|Need Assistance",
-"69692ac178cf93cbb|Maria Corrales|Opportunity Won",
-"6969081cebcb4b9c4|Perris Henderson|Opportunity Won",
-"69666093660930ab3|Ema Delgado|Opportunity Won",
-"696564deac506a2fb|Matt Kim|Estimate Request",
-"69615d5fd61da1768|Elmer Mendoza|In Negotiations",
-"696023f2e46a15bbd|Ariel Garcia|Opportunity Won",
-"69556d9bd302abc9c|Jan Chrisner|Need Assistance",
-"6949bca59e8722d30|Kevin Moore|In Negotiations",
-"6942cd28bd69b185e|Lynda Lydick|Need Assistance",
-"69408ede23a12c952|Gary Rinear|In Negotiations",
-"6939e78a24b8b675c|Mindy Greene|Opportunity Won",
-"6939a48d5e7fec499|James Motte|In Negotiations",
-"6930c2b6b433010ed|Jonathan Elias|Need Assistance",
-"6930b1937ff4443f3|David Wilkinson|In Negotiations",
-"69276c675869a87fe|Tommy Kendrick Cazador|Opportunity Won",
-"6924d101824b2d64a|Max Armstrong|Opportunity Won",
-"691e055b14901f121|Richard Long|In Negotiations",
-"691dee3930c31dd92|Darin Jasper|In Negotiations",
-"690388d3194d17adb|Ramon Navarro|In Negotiations",
-"6903849a8b53a40ed|Richard McQueen|Need Assistance",
-"6903824649d7fcc08|William Werner|In Negotiations",
-"68fab276135ba4f76|James Phelps|In Negotiations",
-"68f94df1d581086fb|Barbara Mills|In Negotiations",
-"68f2a70ed01f98aa6|Aurora Garcia|Need Assistance",
-"68f1135a4cb591dcf|Logan Steward|In Negotiations",
-"68ee9690a3a88983e|Mary Alice Robinson|Opportunity Won",
-"68ed88d78af2e44aa|John Schmiesing|Opportunity Won",
-"68ed26fe1b0c9d56e|Christine DeRuvo (VIP)|Need Assistance",
-"68ed21f098c79a724|Austin Jardine|Need Assistance",
-"68dd6ccebd6680d8f|Elexis Garcia|Need Assistance",
-"68bb325598bb33866|Sandy Zamora|Opportunity Won"
-];
-
-const clients = RAW.map(r => {
-  const [id, name, stage] = r.split("|");
-  return { id, name, stage };
-}).sort((a, b) => {
-  const sa = STAGE_ORDER.indexOf(a.stage), sb = STAGE_ORDER.indexOf(b.stage);
-  if (sa !== sb) return (sa === -1 ? 99 : sa) - (sb === -1 ? 99 : sb);
-  return a.name.localeCompare(b.name);
-});
-
-let activeStage = null;
-const searchEl = document.getElementById("search");
-
-function stageColor(s) { return STAGE_COLORS[s] || "#6c757d"; }
-
-function renderChips() {
-  const counts = {};
-  clients.forEach(c => counts[c.stage] = (counts[c.stage] || 0) + 1);
-  const stages = STAGE_ORDER.filter(s => counts[s]);
-  const el = document.getElementById("chips");
-  el.innerHTML = stages.map(s =>
-    `<span class="chip${activeStage === s ? " active" : ""}" data-stage="${s}">
-      <span class="dot" style="background:${stageColor(s)}"></span>${s} <span class="count">${counts[s]}</span>
-    </span>`).join("");
-  el.querySelectorAll(".chip").forEach(ch => ch.onclick = () => {
-    activeStage = activeStage === ch.dataset.stage ? null : ch.dataset.stage;
-    renderChips(); renderRows();
+const rows=[...document.querySelectorAll("#rows tr")];
+const q=document.getElementById("q"),sel=document.getElementById("stageSel"),count=document.getElementById("count");
+const chips=[...document.querySelectorAll(".chip")];
+let activeStage="";
+function apply(){
+  const term=q.value.trim().toLowerCase();
+  let shown=0;
+  rows.forEach(r=>{
+    const okName=!term||r.dataset.name.includes(term);
+    const okStage=!activeStage||r.dataset.stage===activeStage;
+    const vis=okName&&okStage;
+    r.style.display=vis?"":"none";
+    if(vis)shown++;
   });
+  count.textContent=shown+" shown";
 }
-
-function renderRows() {
-  const q = searchEl.value.trim().toLowerCase();
-  const filtered = clients.filter(c =>
-    (!activeStage || c.stage === activeStage) &&
-    (!q || c.name.toLowerCase().includes(q)));
-  document.getElementById("total").textContent =
-    `Showing ${filtered.length} of ${clients.length} clients`;
-  const tbody = document.getElementById("rows");
-  if (!filtered.length) {
-    tbody.innerHTML = `<tr><td colspan="3" class="empty">No matching clients</td></tr>`;
-    return;
-  }
-  tbody.innerHTML = filtered.map(c =>
-    `<tr>
-      <td><a href="${CRM_BASE}${c.id}" target="_blank" rel="noopener">${c.name}</a></td>
-      <td><span class="badge" style="background:${stageColor(c.stage)};${c.stage === "In Negotiations" ? "color:#212529;" : ""}">${c.stage}</span></td>
-      <td class="crm-link"><a href="${CRM_BASE}${c.id}" target="_blank" rel="noopener">Open in CRM ↗</a></td>
-    </tr>`).join("");
-}
-
-searchEl.addEventListener("input", renderRows);
-renderChips();
-renderRows();
+q.addEventListener("input",apply);
+sel.addEventListener("change",()=>{activeStage=sel.value;syncChips();apply();});
+chips.forEach(c=>c.addEventListener("click",()=>{
+  activeStage=activeStage===c.dataset.stage?"":c.dataset.stage;
+  sel.value=activeStage;syncChips();apply();
+}));
+function syncChips(){chips.forEach(c=>c.classList.toggle("active",c.dataset.stage===activeStage));}
+apply();
 </script>
 </body>
 </html>
